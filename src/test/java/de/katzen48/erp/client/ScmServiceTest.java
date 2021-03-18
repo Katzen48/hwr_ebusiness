@@ -1,7 +1,9 @@
 package de.katzen48.erp.client;
 
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import de.katzen48.erp.client.resource.scm.Item;
 import de.katzen48.erp.client.resource.scm.ItemVariant;
@@ -12,6 +14,7 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ScmServiceTest
 {
 	private Client client;
@@ -27,7 +30,7 @@ public class ScmServiceTest
 	 */
 	
 	@Test
-	public void testListItems() throws IOException
+	public void test01ListItems() throws IOException
 	{
 		Response<DataResponse<Item[]>> itemsResponse = client.scm().items().getItems().execute();
 		
@@ -36,7 +39,7 @@ public class ScmServiceTest
 	}
 	
 	@Test
-	public void testGetItem() throws IOException
+	public void test02GetItem() throws IOException
 	{
 		Response<DataResponse<Item>> itemResponse = client.scm().items().getItem(1).execute();
 		
@@ -45,7 +48,7 @@ public class ScmServiceTest
 	}
 	
 	@Test
-	public void testCreateItem() throws IOException
+	public void test03CreateItem() throws IOException
 	{
 		Item item = Item.builder().description("Test").storagePostingMethod(Item.StoragePostingMethod.FIFO).build();
 		
@@ -55,7 +58,7 @@ public class ScmServiceTest
 	}
 	
 	@Test
-	public void testUpdateItem() throws IOException
+	public void test04UpdateItem() throws IOException
 	{
 		Response<DataResponse<Item[]>> getItemResponse = client.scm().items().getItems().execute();
 		assertTrue(getItemResponse.isSuccessful());
@@ -71,7 +74,7 @@ public class ScmServiceTest
 	}
 	
 	@Test
-	public void testDeleteItem() throws IOException
+	public void test05DeleteItem() throws IOException
 	{
 		Response<DataResponse<Item[]>> getItemResponse = client.scm().items().getItems().execute();
 		assertTrue(getItemResponse.isSuccessful());
@@ -89,7 +92,7 @@ public class ScmServiceTest
 	 */
 	
 	@Test
-	public void testListItemVariants() throws IOException
+	public void test06ListItemVariants() throws IOException
 	{
 		Response<DataResponse<Item[]>> getItemResponse = client.scm().items().getItems().execute();
 		assertTrue(getItemResponse.isSuccessful());
@@ -106,7 +109,7 @@ public class ScmServiceTest
 	}
 	
 	@Test
-	public void testGetItemVariant() throws IOException
+	public void test07GetItemVariant() throws IOException
 	{
 		Response<DataResponse<Item>> getItemResponse = client.scm().items().getItem(1).execute();
 		
@@ -121,7 +124,7 @@ public class ScmServiceTest
 	}
 	
 	@Test
-	public void testCreateItemVariant() throws IOException
+	public void test08CreateItemVariant() throws IOException
 	{
 		Response<DataResponse<Item[]>> getItemResponse = client.scm().items().getItems().execute();
 		assertTrue(getItemResponse.isSuccessful());
@@ -136,7 +139,7 @@ public class ScmServiceTest
 	}
 	
 	@Test
-	public void testUpdateItemVariant() throws IOException
+	public void test09UpdateItemVariant() throws IOException
 	{
 		Response<DataResponse<Item[]>> getItemResponse = client.scm().items().getItems().execute();
 		assertTrue(getItemResponse.isSuccessful());
@@ -158,7 +161,7 @@ public class ScmServiceTest
 	}
 	
 	@Test
-	public void testDeleteItemVariant() throws IOException
+	public void test10DeleteItemVariant() throws IOException
 	{
 		Response<DataResponse<Item[]>> getItemResponse = client.scm().items().getItems().execute();
 		assertTrue(getItemResponse.isSuccessful());
