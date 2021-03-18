@@ -160,6 +160,7 @@ public class ScmServiceTest
 		assertTrue(updateItemVariantResponse.isSuccessful());
 	}
 	
+	@Test
 	public void test10DeleteItemVariant() throws IOException
 	{
 		Response<DataResponse<Item[]>> getItemResponse = client.scm().items().getItems().execute();
