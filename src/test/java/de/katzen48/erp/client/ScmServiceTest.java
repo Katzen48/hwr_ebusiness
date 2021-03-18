@@ -145,7 +145,7 @@ public class ScmServiceTest
 		assertTrue(getItemResponse.isSuccessful());
 		assertTrue(getItemResponse.body().data().length > 0);
 		
-		Item item = getItemResponse.body().data()[0];
+		Item item = getItemResponse.body().data()[getItemResponse.body().data().length - 1];
 		
 		assertTrue(item.getId() != 0);
 		
@@ -160,14 +160,13 @@ public class ScmServiceTest
 		assertTrue(updateItemVariantResponse.isSuccessful());
 	}
 	
-	@Test
 	public void test10DeleteItemVariant() throws IOException
 	{
 		Response<DataResponse<Item[]>> getItemResponse = client.scm().items().getItems().execute();
 		assertTrue(getItemResponse.isSuccessful());
 		assertTrue(getItemResponse.body().data().length > 0);
 		
-		Item item = getItemResponse.body().data()[0];
+		Item item = getItemResponse.body().data()[getItemResponse.body().data().length - 1];
 		
 		assertTrue(item.getId() != 0);
 		
